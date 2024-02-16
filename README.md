@@ -1,1 +1,0 @@
-# bgArray.github.io
