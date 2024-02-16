@@ -32,10 +32,134 @@
 							<p>这是一个关于我的游戏人生的数据界面。我会在这里记录我的游戏人生的数据，包括游戏时间、游戏成就、游戏收获等等。</p>
 							<hr/>
 							<h2>生命卷轴</h2>
+							<h3>1. 五项基础资源数据</h3>
+							<table style="margin: 0px;padding: 0px;">
+								<tr><td style="margin: 0px;padding: 0px;"><div style="width: 500px;height: 400px;" id="chart1"></div></td>
+        					<td style="margin: 0px;padding: 0px;"><div style="width: 500px;height: 200px;" id="chart2"></div></td>
+</tr>
+        												</table>
+							<p></p>
+							<h3>2. 能力值与经验值</h3>
+							<p>提示：点击柱状图有颜色的部分即可跳转查看详细经验值与计划面板。</p>
+							<table>
+												<thead>
+													<tr>
+														<th>能力</th>
+														<th>能力值条</th>
+														<th>能力数据</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>能力1</td>
+														<td>
+															<div style="width: 500px;height: 30px;" id="ability1"></div>
+														</td>
+														<td>
+															25
+														</td>
+													</tr>
+													<tr>
+														<td>能力2</td>
+														<td>
+															<div style="width: 500px;height: 30px;" id="ability2"></div>
+														</td>
+														<td>19</td>
+													</tr>
+													<tr>
+														<td>Item Three</td>
+														<td> Morbi faucibus arcu accumsan lorem.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Four</td>
+														<td>Vitae integer tempus condimentum.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Five</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<td>100.00</td>
+													</tr>
+												</tfoot>
+											</table>
+							<h3>3. 技能卡</h3>
+							<p>提示：点击技能卡图标可跳转至技能详细面板。更多技能卡牌在详细面板中。</p>
+							<table class="alt" style="table-layout: fixed; word-break: break-all; word-wrap: break-word;"
+							align="center">
+								<thead>
+										<tr>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a href="lg_ability_data.html"><img src="images/空白技能卡牌.png"></a></td>
+										<td><a href="lg_ability_data.html"><img src="images/空白技能卡牌.png"></a></td>
+										<td><a href="lg_ability_data.html"><img src="images/空白技能卡牌.png"></a></td>
+										<td><a href="lg_ability_data.html"><img src="images/空白技能卡牌.png"></a></td>
+									</tr>
+								</tbody>
+			</table>
+							<h3>4. 人生目标</h3>
+							<p>提示：点击人生目标可跳转至目标详细面板。更多目标在详细面板中。</p>
+							<h1><a href="lg_aim_data.html"><strong>当前目标：xxx</strong></a> </h1>
+							<h3>5. 成就卡</h3>
+							<p>提示：点击成就卡图标可跳转至成就详细面板。更多成就在详细面板中。</p>
+							<table class="alt" style="table-layout: fixed; word-break: break-all; word-wrap: break-word;"
+							align="center">
+								<thead>
+										<tr>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a href="lg_achieve_data.html"><img src="images/空白成就卡牌.png"></a></td>
+										<td><a href="lg_achieve_data.html"><img src="images/空白成就卡牌.png"></a></td>
+										<td><a href="lg_achieve_data.html"><img src="images/空白成就卡牌.png"></a></td>
+										<td><a href="lg_achieve_data.html"><img src="images/空白成就卡牌.png"></a></td>
+									</tr>
+								</tbody>
+			</table>
+							<h3>6. 近期目标（意义单位）</h3>
+							<p>提示：点击图表可跳转至目标详细面板。</p>
+							<div style="width: 900px;height: 700px;" id="chart3"></div>
+							<h3>7. 近期快乐</h3>
+							<p>提示：点击图表可跳转至快乐详细面板。</p>
+							<div style="width: 900px;height: 300px;" id="chart4"></div>
+
+							<hr/>
+							<h2>近期报告</h2>
+							<h3>月报告（2024.2）</h3>
+								<ol>
+									<li>xxx</li>
+									<li>xxx</li>
+									<li>xxx</li>
+									<li>xxx</li>
+									<li>xxx</li>
+									<li>xxx</li>
+								</ol>
+							<h3>年专注时长记录（状态分析）</h3>
+							<div style="width: 900px;height: 300px;" id="chart5"></div>
+
+
+							<a href="#" class="button primary">回到顶部</a>
+							<a href="index.html" class="button primary">返回我的主页</a>
 
 						</section>
-						<div style="width: 1200px;height: 400px;" id="chart1"></div>
-						<div style="width: 1200px;height: 400px;" id="chart2"></div>
 
 
 			</div>
@@ -128,7 +252,7 @@
 		},
 		grid: {
 			top: '3%',
-			left: "3%",
+			left: "20%",
 		},
 		xAxis: {
 			type: 'value',
@@ -144,7 +268,7 @@
 		},
 		yAxis: {
 			type: 'category',
-			data: ["a", "b", "c"],
+			data: ["金钱 Money", "身体 Health", "时间 Time"],
 			splitLine: {
 				show: false //去掉辅助线
 			},
@@ -154,17 +278,6 @@
 			axisTick: {
 				show: false
 			},
-<!--			axisLabel: {-->
-<!--				inside: true,-->
-<!--				margin: 0,-->
-<!--				textStyle: {-->
-<!--					color: '#fff', //值的颜色-->
-<!--					fontSize: 16,-->
-<!--					verticalAlign: "bottom",-->
-<!--					align: "left",-->
-<!--					padding: [0, 0, 10, 0],-->
-<!--				},-->
-<!--			}-->
 		},
 		series: [{
 			data: [1,2,3],
@@ -177,6 +290,7 @@
 				// borderRadius:5
 			},
 			barWidth: 10,
+			barGap: 0,
 			itemStyle: {
 				normal: {
 						color: 'rgb(237, 18, 21)',
@@ -200,4 +314,286 @@
 		}]
 	};
     myChart.setOption(option);
+</script>
+<script>
+	var myChart = echarts.init(document.getElementById('ability1'));
+	var option = {
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+			},
+		},
+		xAxis: {
+			type: 'value',
+			max: 100,
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisLabel: {
+				show: false,
+			}
+		},
+		yAxis: {
+			type: 'category',
+			data: ["金钱 Money"],
+			axisLabel: {
+				show: false,
+			},
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false
+			},
+		},
+		series: [{
+			data: [25],
+			type: 'bar',
+			showBackground: true,
+			backgroundStyle: {
+				borderWidth: 1,
+				borderColor: 'rgb(0, 0, 0)',
+				// borderRadius:5
+			},
+			barWidth: 5,
+			barGap: -50,
+			itemStyle: {
+				cursor: 'pointer',
+				normal: {
+						color: 'rgb(0, 128, 0)',
+
+
+					// barBorderRadius: [5, 5, 5, 5],
+				},
+			},
+			emphasis: {
+				itemStyle: {
+					color: 'rgba(0, 128, 0, 0.5)'
+				}
+			},
+		}]
+	};
+	myChart.on('click', function (params) {
+		window.open("lg_experience_data.html");  //还没写
+	});
+    myChart.setOption(option);
+</script>
+<script>
+	var myChart = echarts.init(document.getElementById('ability2'));
+	var option = {
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+			},
+		},
+		xAxis: {
+			type: 'value',
+			max: 100,
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisLabel: {
+				show: false,
+			}
+		},
+		yAxis: {
+			type: 'category',
+			data: ["数学 Math"],
+			axisLabel: {
+				show: false,
+			},
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false
+			},
+		},
+		series: [{
+			data: [19],
+			type: 'bar',
+			showBackground: true,
+			backgroundStyle: {
+				borderWidth: 1,
+				borderColor: 'rgb(0, 0, 0)',
+				// borderRadius:5
+			},
+			barWidth: 5,
+			barGap: -50,
+			itemStyle: {
+				normal: {
+						color: 'rgb(128, 255, 255)',
+
+
+					// barBorderRadius: [5, 5, 5, 5],
+				},
+				emphasis: {
+					itemStyle: {
+						color: 'rgba(128, 255, 255, 0.5)'
+					}
+				},
+			},
+		}]
+	};
+	myChart.on('click', function (params) {
+		window.open("lg_experience_data.html");  //还没写
+	});
+    myChart.setOption(option);
+</script>
+<script>
+	var mCharts = echarts.init(document.getElementById("chart3"))
+	option = {
+	  title: {
+		text: 'Stacked Line'
+	  },
+	  tooltip: {
+		trigger: 'axis'
+	  },
+	  legend: {
+		data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+	  },
+	  grid: {
+		left: '3%',
+		right: '4%',
+		bottom: '3%',
+		containLabel: true
+	  },
+	  toolbox: {
+		feature: {
+		  saveAsImage: {}
+		}
+	  },
+	  xAxis: {
+		type: 'category',
+		boundaryGap: false,
+		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+	  },
+	  yAxis: {
+		type: 'value'
+	  },
+	  series: [
+		{
+		  name: 'Email',
+		  type: 'line',
+		  stack: 'Total',
+		  data: [120, 132, 101, 134, 90, 230, 210]
+		},
+		{
+		  name: 'Union Ads',
+		  type: 'line',
+		  stack: 'Total',
+		  data: [220, 182, 191, 234, 290, 330, 310]
+		},
+		{
+		  name: 'Video Ads',
+		  type: 'line',
+		  stack: 'Total',
+		  data: [150, 232, 201, 154, 190, 330, 410]
+		},
+		{
+		  name: 'Direct',
+		  type: 'line',
+		  stack: 'Total',
+		  data: [320, 332, 301, 334, 390, 330, 320]
+		},
+		{
+		  name: 'Search Engine',
+		  type: 'line',
+		  stack: 'Total',
+		  data: [820, 932, 901, 934, 1290, 1330, 1320]
+		}
+	  ]
+	};
+	mCharts.setOption(option);
+</script>
+<script>
+	var mCharts = echarts.init(document.getElementById("chart4"))
+	option = {
+	 toolbox: {
+		feature: {
+		  saveAsImage: {}
+		}
+	  },
+	  xAxis: {
+		data: ['10-24', '10-25', '10-26', '10-27' ,'10-28', '10-29', '10-30', '11-01']
+	  },
+	  yAxis: {
+	  	min: -5,
+		max: 5
+	  },
+	  series: [
+		{
+		  type: 'candlestick',
+		  data: [
+			[0, 3, -1, 4],
+			[0, 1, -2, 2],
+			[0, -2, -2, 0],
+			[0, -3, -4, -2],
+			[0, 1, -3, 3],
+			[0, 0, -2, 2],
+			[0, 5, 0, 5],
+			[0, -1, -1, 4],
+		  ]
+		}
+	  ]
+	};
+	mCharts.setOption(option);
+</script>
+<script>
+	myChart = echarts.init(document.getElementById('chart5'));
+	option = {
+		toolbox: {
+			feature: {
+			  saveAsImage: {}
+			}
+		  },
+	  title: {
+		top: 30,
+		left: 'center',
+		text: '专注时长(h)'
+	  },
+	  tooltip: {},
+	  visualMap: {
+		min: 0,
+		max: 12,
+		type: 'piecewise',
+		orient: 'horizontal',
+		left: 'center',
+		top: 65
+	  },
+	  calendar: {
+		top: 120,
+		left: 30,
+		right: 30,
+		cellSize: ['auto', 13],
+		range: '2024',
+		itemStyle: {
+		  borderWidth: 0.5
+		},
+		yearLabel: { show: false }
+	  },
+	  series: {
+		type: 'heatmap',
+		coordinateSystem: 'calendar',
+		data:  [['2024/1/1', 2],
+				['2024/1/2', 2.5],
+				['2024/2/16', 8],
+		],
+	  }
+	};
+	myChart.setOption(option);
 </script>
