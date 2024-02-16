@@ -100,6 +100,7 @@
           {
             type: 'radar',
             label:{show:true},
+            position: 'center',
             data: [
               {
                 name: '2024.2.16',
@@ -184,16 +185,18 @@
 					// barBorderRadius: [5, 5, 5, 5],
 				}
 			},
-			label: {
-				normal: {
-					show: true,
-					position: [1000, -20],
-					// position: [430, -20],   //value的位置
-					textStyle: {
-						color: '#F68300', //值的颜色
-						fontSize: 16,}
-				}
-			}
+<!--			label: {-->
+<!--				normal: {-->
+<!--					show: true,-->
+<!--					position: "right",-->
+
+<!--					position: "left",   //value的位置-->
+<!--					textStyle: {-->
+<!--						color: 'rgb(0, 0, 0)', //值的颜色-->
+<!--						fontSize: 18,-->
+<!--						}-->
+<!--				}-->
+<!--			}-->
 		}]
 	};
     myChart.setOption(option);
