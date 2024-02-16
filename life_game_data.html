@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>bgArray's game life philosophy data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="assets/js/echarts.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+            <!-- Header -->
+					<header id="header">
+						<h1>我的游戏人生——数据界面</h1>
+						<p>数字化是一种人生态度。</p>
+					</header>
+            <!-- Main -->
+                    <div id="main">
+                        <section id="content" class="main">
+                            <h2>简介</h2>
+                            <p><strong>游戏人生观</strong>是一种特别的人生观。
+								如果你想了解更多相关信息，请点击<a href="https://bgarray.github.io/">这里</a>。</p>
+							<p>这是一个关于我的游戏人生的数据界面。我会在这里记录我的游戏人生的数据，包括游戏时间、游戏成就、游戏收获等等。</p>
+							<hr/>
+							<h2>生命卷轴</h2>
+
+						</section>
+						<div style="width: 1200px;height: 400px;" id="chart1"></div>
+						<div style="width: 1200px;height: 400px;" id="chart2"></div>
+
+
+			</div>
+
+            <!-- Footer -->
+                    <footer id="footer">
+
+            </footer>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			</div>
+	</body>
+</html>
+<script>
+      var mCharts = echarts.init(document.getElementById("chart1"))
+      // 各个维度的最大值
+      var dataMax = [
+        {
+          name: '金钱 Money',
+          max: 100
+        },
+        {
+          name: '影响力 Influence',
+          max: 100
+        },
+        {
+          name: '智慧 Wisdom',
+          max: 100
+        },
+        {
+          name: '身体 Health',
+          max: 100
+        },
+        {
+          name: '时间 Time',
+          max: 100
+        },
+      ]
+      var option = {
+      	tooltip: {
+            trigger: 'item',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+       	legend: {
+			data: ['2024.2.16', '未来']
+		},
+
+        radar: {
+          indicator: dataMax,  //配置各个维度的最大值
+        },
+        series: [
+          {
+            type: 'radar',
+            label:{show:true},
+            data: [
+              {
+                name: '2024.2.16',
+                value: [80, 90, 80, 82, 90]
+              },
+              {
+                name: '未来',
+                value: [0, 0, 0, 0, 0]
+              },
+            ],
+
+          }
+        ]
+      }
+      mCharts.setOption(option)
+  </script>
+<script>
+	var myChart = echarts.init(document.getElementById('chart2'));
+	var option = {
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+			},
+		},
+		grid: {
+			top: '3%',
+			left: "3%",
+		},
+		xAxis: {
+			type: 'value',
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisLabel: {
+				show: false,
+			}
+		},
+		yAxis: {
+			type: 'category',
+			data: ["a", "b", "c"],
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false
+			},
+<!--			axisLabel: {-->
+<!--				inside: true,-->
+<!--				margin: 0,-->
+<!--				textStyle: {-->
+<!--					color: '#fff', //值的颜色-->
+<!--					fontSize: 16,-->
+<!--					verticalAlign: "bottom",-->
+<!--					align: "left",-->
+<!--					padding: [0, 0, 10, 0],-->
+<!--				},-->
+<!--			}-->
+		},
+		series: [{
+			data: [1,2,3],
+			type: 'bar',
+			showBackground: true,
+			backgroundStyle: {
+<!--				color: '#253E7D',-->
+				borderWidth: 1,
+				borderColor: 'rgb(0, 0, 0)',
+				// borderRadius:5
+			},
+			barWidth: 10,
+			itemStyle: {
+				normal: {
+						color: 'rgb(237, 18, 21)',
+
+
+					// barBorderRadius: [5, 5, 5, 5],
+				}
+			},
+			label: {
+				normal: {
+					show: true,
+					position: [1000, -20],
+					// position: [430, -20],   //value的位置
+					textStyle: {
+						color: '#F68300', //值的颜色
+						fontSize: 16,}
+				}
+			}
+		}]
+	};
+    myChart.setOption(option);
+</script>
