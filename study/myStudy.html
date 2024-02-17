@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<title>诸葛八卦的学习空间^_^</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+        <script src="../assets/js/echarts.min.js"></script>
+	</head>
+<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+            <!-- Header -->
+					<header id="header">
+						<h1>我的学习——数据界面</h1>
+						<p>快来监督我学习！</p>
+					</header>
+            <!-- Main -->
+                    <div id="main">
+                        <section id="content" class="main">
+                            <h2>自学 评估</h2>
+                            <div id="chart1" style="width: 1000px;height:400px;"></div>
+                            <h2>专注 监督</h2>
+                            <div id="chart2" style="width: 1000px;height:600px;"></div>
+                            <p>月 专注 曲线</p>
+                            <div id="chart3" style="width: 1000px;height:400px;"></div>
+                            <p>年 专注 热力图</p>
+                            <div id="chart4" style="width: 900px;height:300px;"></div>
+                            <h2>任务 完成</h2>
+                            <div id="chart5" style="width: 1000px;height:400px;"></div>
+                            <h2>考试 趋势</h2>
+                            <div id="chart6" style="width: 1000px;height:400px;"></div>
+                            <p>排名</p>
+                            <div id="chart7" style="width: 1000px;height:400px;"></div>
+                            <h2>时间 分配</h2>
+                            <div id="chart8" style="width: 1000px;height:1000px;"></div>
+                        </section>
+                    </div>
+            <!-- Footer -->
+                <footer id="footer">
+                </footer>
+            </div>
+</body>
+</html>
+
+<!--// 饼图-->
+<script>
+    var chart1 = echarts.init(document.getElementById('chart1'));
+    option = {
+      title: {
+        show: true,
+        text: '日 时间分配',
+        x:'center',
+        y:'top',
+        textAlign: 'top',
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['45%', '55%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: 1, name: 'Search Engine' },
+            { value: 5, name: 'Direct' },
+            { value: 8, name: 'Email' },
+            { value: 4, name: 'Union Ads' },
+            { value: 3, name: 'Video Ads' }
+          ]
+        }
+      ]
+    };
+    chart1.setOption(option);
+</script>
+
+<!--// 日历饼图-->
+<script>
+    // This example requires ECharts v5.4.0 or later
+    var chart2 = echarts.init(document.getElementById('chart2'));
+    const cellSize = [80, 80];
+    const pieRadius = 30;
+    function getVirtualData() {
+      const date = +echarts.time.parse('2024-02-01');
+      const end = +echarts.time.parse('2024-03-01');
+      const dayTime = 3600 * 24 * 1000;
+      const data = [];
+      for (let time = date; time < end; time += dayTime) {
+        data.push([
+          echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),
+          Math.floor(Math.random() * 10000)
+        ]);
+      }
+      return data;
+    }
+    const scatterData = getVirtualData();
+    const pieSeries = scatterData.map(function (item, index) {
+      return {
+        type: 'pie',
+        id: 'pie-' + index,
+        center: item[0],
+        radius: pieRadius,
+        coordinateSystem: 'calendar',
+        label: {
+          formatter: '{c}',
+          position: 'inside'
+        },
+        data: [
+          { name: 'Work', value: Math.round(Math.random() * 24) },
+          { name: 'Entertainment', value: Math.round(Math.random() * 24) },
+          { name: 'Sleep', value: Math.round(Math.random() * 24) }
+        ]
+      };
+    });
+    option = {
+      tooltip: {},
+      legend: {
+        data: ['Work', 'Entertainment', 'Sleep'],
+        bottom: 20
+      },
+      calendar: {
+        top: 'middle',
+        left: 'center',
+        orient: 'vertical',
+        cellSize: cellSize,
+        yearLabel: {
+          show: false,
+          fontSize: 30
+        },
+        dayLabel: {
+          margin: 20,
+          firstDay: 1,
+          nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        monthLabel: {
+          show: false
+        },
+        range: ['2024-02']
+      },
+      series: [
+        {
+          id: 'label',
+          type: 'scatter',
+          coordinateSystem: 'calendar',
+          symbolSize: 0,
+          label: {
+            show: true,
+            formatter: function (params) {
+              return echarts.time.format(params.value[0], '{dd}', false);
+            },
+            offset: [-cellSize[0] / 2 + 10, -cellSize[1] / 2 + 10],
+            fontSize: 14
+          },
+          data: scatterData
+        },
+        ...pieSeries
+      ]
+    };
+    chart2.setOption(option);
+</script>
+
+<!--// 折线图-->
+<script>
+    // 写个折线图
+    var chart3 = echarts.init(document.getElementById('chart3'));
+    option = {
+      title: {
+        text: 'Stacked Line'
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: 'Email',
+          type: 'line',
+          stack: 'Total',
+          data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+          name: 'Union Ads',
+          type: 'line',
+          stack: 'Total',
+          data: [220, 182, 191, 234, 290, 330, 310]
+        }
+      ]
+    };
+    chart3.setOption(option);
+</script>
+
+<!--// 热力图-->
+<script>
+    var chart4 = echarts.init(document.getElementById('chart4'));
+    option = {
+		toolbox: {
+			feature: {
+			  saveAsImage: {}
+			}
+		  },
+	  title: {
+		top: 30,
+		left: 'center',
+		text: '专注时长(h)'
+	  },
+	  tooltip: {},
+	  visualMap: {
+		min: 0,
+		max: 12,
+		type: 'piecewise',
+		orient: 'horizontal',
+		left: 'center',
+		top: 65
+	  },
+	  calendar: {
+		top: 120,
+		left: 30,
+		right: 30,
+		cellSize: ['auto', 13],
+		range: '2024',
+		itemStyle: {
+		  borderWidth: 0.5
+		},
+		yearLabel: { show: false }
+	  },
+	  series: {
+		type: 'heatmap',
+		coordinateSystem: 'calendar',
+		data:  [['2024/1/1', 2],
+				['2024/1/2', 2.5],
+				['2024/2/16', 8],
+		],
+	  }
+	};
+    chart4.setOption(option);
+</script>
+
+<!--// 柱状图-->
+<script>
+    var chart5 = echarts.init(document.getElementById('chart5'));
+    var option = {
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: "shadow",
+			},
+		},
+		xAxis: {
+			type: 'value',
+			max: 100,
+			splitLine: {
+				show: false //去掉辅助线
+			},
+			axisLine: {
+				show: false,
+			},
+			axisLabel: {
+				show: false,
+			}
+		},
+		yAxis: {
+			type: 'category',
+			data: ["金钱 Money", "时间 Time", "精力 Energy", "情绪 Emotion"],
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false
+			},
+		},
+		series: [{
+			data: [25, 50, 75, 100],
+			type: 'bar',
+			showBackground: true,
+			backgroundStyle: {
+				borderWidth: 1,
+				borderColor: 'rgb(0, 0, 0)',
+				// borderRadius:5
+			},
+			barWidth: 5,
+			barGap: -50,
+			itemStyle: {
+				cursor: 'pointer',
+				normal: {
+						color: function(params) {
+                	//注意，如果颜色太少的话，后面颜色不会自动循环，最好多定义几个颜色
+                    var colorList = ['rgb(0, 128, 0)','rgb(0, 128, 0)','rgb(0, 128, 0)','rgb(0, 128, 0)'];
+                    return colorList[params.dataIndex]
+                },
+
+
+					// barBorderRadius: [5, 5, 5, 5],
+				},
+			},
+			emphasis: {
+				itemStyle: {
+					color: function(params) {
+                	//注意，如果颜色太少的话，后面颜色不会自动循环，最好多定义几个颜色
+                    var colorList = ['rgba(0, 128, 0, 0.5)','rgba(0, 128, 0, 0.5)','rgba(0, 128, 0, 0.5)','rgba(0, 128, 0, 0.5)'];
+                    return colorList[params.dataIndex]
+                },
+				}
+			},
+		}]
+	};
+    chart5.setOption(option);
+</script>
+
+<!--// 折线图2-->
+<script>
+    var chart6 = echarts.init(document.getElementById('chart6'));
+    option = {
+      title: {
+        text: '折线图堆叠'
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: '邮件营销',
+          type: 'line',
+          stack: '总量',
+          data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+          name: '联盟广告',
+          type: 'line',
+          stack: '总量',
+          data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+          name: '视频广告',
+          type: 'line',
+          stack: '总量',
+          data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+          name: '直接访问',
+          type: 'line',
+          stack: '总量',
+          data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+          name: '搜索引擎',
+          type: 'line',
+          stack: '总量',
+          data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+      ]
+    };
+    chart6.setOption(option);
+</script>
+
+<!--// 折线图3-->
+<script>
+    var chart7 = echarts.init(document.getElementById('chart7'));
+    option = {
+      tooltip: {
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line',
+          smooth: true
+        }
+      ]
+    };
+    chart7.setOption(option);
+</script>
+
+<!--// 桑基图-->
+<script>
+    var chart8 = echarts.init(document.getElementById('chart8'));
+    option = {
+      tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+      },
+      series: {
+        type: 'sankey',
+        layout: 'none',
+        emphasis: {
+          focus: 'adjacency'
+        },
+        data: [
+          {
+            name: 'a'
+          },
+          {
+            name: 'b'
+          },
+          {
+            name: 'a1'
+          },
+          {
+            name: 'a2'
+          },
+          {
+            name: 'b1'
+          },
+          {
+            name: 'c'
+          }
+        ],
+        links: [
+          {
+            source: 'a',
+            target: 'a1',
+            value: 5
+          },
+          {
+            source: 'a',
+            target: 'a2',
+            value: 3
+          },
+          {
+            source: 'b',
+            target: 'b1',
+            value: 8
+          },
+          {
+            source: 'a',
+            target: 'b1',
+            value: 3
+          },
+          {
+            source: 'b1',
+            target: 'a1',
+            value: 1
+          },
+          {
+            source: 'b1',
+            target: 'c',
+            value: 2
+          }
+        ]
+      }
+    };
+    chart8.setOption(option);
+</script>
